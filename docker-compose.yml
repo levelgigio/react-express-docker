@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  # SERVER CONTAINER #
+  server:
+    build: ./server
+    environment:
+      PORT: ${APP_SERVER_PORT}
+      HOST: ${API_HOST}
+    expose:
+      - ${APP_SERVER_PORT}
+    ports:
+      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+    volumes:
+      - ./server/src:/usr/apps/portfolio/server/src
+    command: npm run dev
+
+  # CLIENT CONTAINER #
+  client:
+    build: ./client
+    environment:
+      PORT: ${REACT_APP_PORT}
+    expose:
+      - ${REACT_APP_PORT}
+    ports:
+      - ${REACT_APP_PORT}:${REACT_APP_PORT}
+    volumes:
+      - ./client/src:/usr/apps/portfolio/client/src
+      - ./client/public:/usr/apps/portfolio/client/public
+    links:
+      - server
+    command: npm run start
