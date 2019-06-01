@@ -5,12 +5,12 @@ services:
   server:
     build: ./server
     environment:
-      PORT: ${APP_SERVER_PORT}
-      HOST: ${API_HOST}
+      PORT: ${SERVER_PORT}
+      HOST: ${SERVER_HOST}
     expose:
-      - ${APP_SERVER_PORT}
+      - ${SERVER_PORT}
     ports:
-      - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+      - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
       - ./server/src:/usr/apps/portfolio/server/src
     command: npm run dev
@@ -19,7 +19,8 @@ services:
   client:
     build: ./client
     environment:
-      PORT: ${REACT_APP_PORT}
+      PORT: ${REACT_APP_PORT} # PORT is the default name for the RN port env var
+      SERVER_PORT: ${SERVER_PORT} # Used in packege.json to set proxy
     expose:
       - ${REACT_APP_PORT}
     ports:
