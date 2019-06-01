@@ -1,5 +1,3 @@
-## Segunda versão em desenvolvimento do meu portfolio online pessoal
+## Projeto default react+express+docker
 
-Tecnologias que penso em utilizar: <br>
-NodeJS, ReactJS + React Hooks + Styled Components, Jenkins, Docker, AWS,
-algum tipo de Analytics (Heat Map, etc), Firebase
+git clone para usar!
